@@ -1,0 +1,255 @@
+﻿<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DataMatrix分析平台</title>
+
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<link rel="stylesheet" href="../assets/css/amazeui.css" />
+	<link rel="stylesheet" href="../assets/css/core.css" />
+	<link rel="stylesheet" href="../assets/css/menu.css" />
+	<link rel="stylesheet" href="../assets/css/index.css" />
+	<link rel="stylesheet" href="../assets/css/admin.css" />
+	<link rel="stylesheet" href="../assets/css/page/typography.css" />
+	<link rel="stylesheet" href="../assets/css/page/form.css" />
+	<link rel="stylesheet" href="../assets/css/component.css" />
+
+
+	<link href="../css/styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+<!-- Begin page -->
+	<header class="am-topbar am-topbar-fixed-top">
+		<div class="am-topbar-left am-hide-sm-only">
+			<a href="../index.jsp" class="logo"><span>DataMatrix分析平台</span><i class="zmdi zmdi-layers"></i></a>
+		</div>
+
+
+		<div class="contain">
+			<ul class="am-nav am-navbar-nav am-navbar-left">
+
+				<li>
+					<h4 class="page-title">客流概述</h4>
+				</li>
+			</ul>
+
+			<ul class="am-nav am-navbar-nav am-navbar-right">
+				<li class="hidden-xs am-hide-sm-only">
+						<a href="../login.jsp"><button type="button" class="btn btn-default">退出登录</button></a>
+				</li>
+			</ul>
+		</div>
+	</header>
+	<!-- end page -->
+
+
+	<div class="admin">
+
+		<!-- ========== Left Sidebar Start ========== -->
+
+		<!-- sidebar start -->
+		<div class="admin-sidebar am-offcanvas  am-padding-0" id="admin-offcanvas">
+			<div class="am-offcanvas-bar admin-offcanvas-bar">
+				<!-- User -->
+				<div class="user-box am-hide-sm-only">
+
+					<h5><a href="#">DataMatrix Group</a> </h5>
+
+				</div>
+				<!-- End User -->
+
+				<ul class="am-list admin-sidebar-list">
+					<li><a href="../index.jsp"><span class="am-icon-home"></span> 首页</a></li>
+
+					<!-- 客流分析 start -->
+					<li class="admin-parent">
+						<a class="am-cf" data-am-collapse="{target: '#left-customerAna'}"><span class="am-icon-table"></span> 客流分析 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+						<ul class="am-list am-collapse admin-sidebar-sub am-in" id="left-customerAna">
+							<li><a href="flow_main.jsp" class="am-cf"> 整体概览</span></a></li>
+							<li><a href="flow_real.jsp">实时客流</a></li>
+							<li><a href="flow_person.jsp">顾客分析</a></li>
+							<li><a href="flow_probe.jsp">探针流水</a></li>
+
+						</ul>
+					</li>
+					<!-- 客流分析 end -->
+
+
+					<!-- 设备管理 start -->
+
+					<li><a href="dev_manage.jsp"><span class="am-icon-file"></span> 设备管理</a></li>
+					<!-- 设备管理 end -->
+
+					<!-- 商家设置 start -->
+					<li class="admin-parent">
+						<a class="am-cf" data-am-collapse="{target: '#left-shopInfo'}"><span class="am-icon-line-chart"></span> 商家设置 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+						<ul class="am-list am-collapse admin-sidebar-sub am-in" id="left-shopInfo">
+							<li><a href="shop_info.jsp" class="am-cf"> 商家信息</span></a></li>
+							<li><a href="shop_manage.jsp">账号管理</a></li>
+						</ul>
+					</li>
+					<!-- 商家设置 end -->
+
+			</div>
+		</div>
+		<!-- sidebar end -->
+
+
+		<!-- ========== Left Sidebar end ========== -->
+		<!--	<div class="am-g">-->
+		<!-- ============================================================== -->
+		<!-- Start right Content here -->
+		<div class="content-page">
+			<!-- Start content -->
+			<div class="content">
+
+				<div class="am-g">
+					<ul class="nav nav-tabs">
+
+						<ul class="nav nav-pills">
+							<li class="active"><a href="#pilltab1" data-toggle="tab">昨天</a></li>
+
+						</ul>
+
+						<div class="tab-content">
+							<div class="tab-pane fade in active" id="pilltab1">
+								<div class="row">
+									<div class="col-xs-12 col-md-6 col-lg-3">
+										<div class="panel panel-red panel-widget">
+											<div class="row no-padding">
+												<div class="col-sm-3 col-lg-5 widget-left">
+													<em class="glyphicon glyphicon-user glyphicon-l"></em>
+												</div>
+												<div class="col-sm-9 col-lg-7 widget-right">
+													<div class="large">1589</div>
+													<div class="text-muted">客流量</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-xs-12 col-md-6 col-lg-3">
+										<div class="panel panel-orange panel-widget">
+											<div class="row no-padding">
+												<div class="col-sm-3 col-lg-5 widget-left">
+													<em class="glyphicon glyphicon-user glyphicon-l"></em>
+												</div>
+												<div class="col-sm-9 col-lg-7 widget-right">
+													<div class="large">354</div>
+													<div class="text-muted">入店量</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-md-6 col-lg-3">
+										<div class="panel panel-blue panel-widget ">
+											<div class="row no-padding">
+												<div class="col-sm-3 col-lg-5 widget-left">
+													<em class="glyphicon glyphicon-user glyphicon-l"></em>
+												</div>
+												<div class="col-sm-9 col-lg-7 widget-right">
+													<div class="large">32</div>
+													<div class="text-muted">跳出量</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-md-6 col-lg-3">
+										<div class="panel panel-teal panel-widget">
+											<div class="row no-padding">
+												<div class="col-sm-3 col-lg-5 widget-left">
+													<em class="glyphicon glyphicon-user glyphicon-l"></em>
+												</div>
+												<div class="col-sm-9 col-lg-7 widget-right">
+													<div class="large">322</div>
+													<div class="text-muted">深访量</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+
+								</div>
+							</div>
+
+
+
+						</div>
+					</ul>
+				</div>
+
+
+				<div class="am-g">
+					<ul class="nav nav-tabs">
+
+						<ul class="nav nav-pills">
+							<li class="active"><a href="#pilltab1" data-toggle="tab">近一周</a></li>
+
+						</ul>
+
+						<div class="tab-content">
+							<div class="tab-pane fade in active" id="pilltab1">
+								<!-- 一周数据折线图 -->
+								<div class="card-box">
+									<div id="week" style="width: 100%;height: 300px;"></div>
+								</div>
+							</div>
+
+						</div>
+
+					</ul>
+				</div>
+
+				<div class="am-g">
+					<ul class="nav nav-tabs">
+
+						<ul class="nav nav-pills">
+							<li class="active"><a href="#pilltab1" data-toggle="tab">近30天</a></li>
+
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane fade in active" id="pilltab1">
+								<div class="card-box">
+									<div id="month" style="width: 100%;height: 300px;"></div>
+								</div>
+							</div>
+
+						</div>
+					</ul>
+				</div>
+
+
+
+
+
+
+			</div>
+		</div>
+		<!-- end right Content here -->
+		<!--</div>-->
+	</div>
+	</div>
+
+	<!-- navbar -->
+	<a href="admin-offcanvas" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"><!--<i class="fa fa-bars" aria-hidden="true"></i>--></a>
+
+	<script type="text/javascript" src="../assets/js/jquery-2.1.0.js"></script>
+	<script type="text/javascript" src="../assets/js/amazeui.min.js"></script>
+	<script type="text/javascript" src="../assets/js/app.js"></script>
+	<script type="text/javascript" src="../assets/js/blockUI.js"></script>
+	<script type="text/javascript" src="../assets/js/charts/echarts.min.js"></script>
+	<script type="text/javascript" src="../assets/js/charts/flow_main.js"></script>
+
+	<script src="../js/jquery-1.11.1.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
