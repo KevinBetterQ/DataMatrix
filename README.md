@@ -15,4 +15,3 @@
 8. 软件参数：  
 Ubuntu14.04、flume-1.7.0 、 Hadoop-2.6.0 、HBase1.2.5、spark2.1.0 、mysql10.1.13 +、spark Streaming、
 scala-2.12.1 、 Java 1.8 、  eclipse 、IntelliJ IDEA开发环境  
-9. 演示访问链接：http://111.231.14.28:8080/QLWeb/index.jsp  
