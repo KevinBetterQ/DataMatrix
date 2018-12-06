@@ -1,5 +1,7 @@
 package org.apache.hadoop.demo;
 
+//MapReduce处理Json
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -70,14 +72,14 @@ public class Hbase {
 				str = values.next();
 			}
 			context.write(key, str);
-//			insertTable("row"+(rownum++), str.toString());
+			//insertTable("row"+(rownum++), str.toString());
 		}
 	}
 
 	private static void init() throws Exception {
 		conf = HBaseConfiguration.create();
 		conf.set("hbase.zookeeper.property.clientPort", "2181");
-//		 conf.set("hbase.zookeeper.quorum", "master,slave1,slave2");
+		//conf.set("hbase.zookeeper.quorum", "master,slave1,slave2");
 		conf.set("hbase.zookeeper.quorum", "localhost");
 
 		conf.set("hbase.master", "localhost:60000");
@@ -178,7 +180,7 @@ public class Hbase {
 
 			}
 
-//			System.out.println(time);
+			//System.out.println(time);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

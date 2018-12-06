@@ -28,10 +28,11 @@ public class getData {
     static Connection conn;  
     static HTableDescriptor tableDescriptor;
     static HTable table;
+	
     private static void init() throws Exception {
         conf = HBaseConfiguration.create();
         conf.set("hbase.zookeeper.property.clientPort", "2181");
-//        conf.set("hbase.zookeeper.quorum", "master,slave1,slave2");
+		//conf.set("hbase.zookeeper.quorum", "master,slave1,slave2");
         conf.set("hbase.zookeeper.quorum", "localhost");
 
         conf.set("hbase.master", "localhost:60000");                 
@@ -49,11 +50,11 @@ public class getData {
 		HTable table = new HTable(conf, "wifi0706");
 		
 		ArrayList<String> oldMac = new ArrayList<String>();
-//		ArrayList<String> oldMacLasttime = new ArrayList<String>();
-//		ArrayList<Integer> oldMacContime = new ArrayList<Integer>();
+		//ArrayList<String> oldMacLasttime = new ArrayList<String>();
+		//ArrayList<Integer> oldMacContime = new ArrayList<Integer>();
 		
 		ArrayList<String> newMac = new ArrayList<String>();
-//		ArrayList<String> firstTime = new ArrayList<String>();
+		//ArrayList<String> firstTime = new ArrayList<String>();
 		ArrayList<UserInfo> users = new ArrayList<UserInfo>();
 		String timeStr = null;
 		String Mmac = null;
@@ -64,8 +65,8 @@ public class getData {
 		ResultSet rsGetOld = dbGetOld.select(strGetOld);
 		while(rsGetOld.next()){
 			oldMac.add(rsGetOld.getString(1));
-//			oldMacLasttime.add(rsGetOld.getString(6));
-//			oldMacContime.add(rsGetOld.getInt(7));
+			//oldMacLasttime.add(rsGetOld.getString(6));
+			//oldMacContime.add(rsGetOld.getInt(7));
 			UserInfo info = new UserInfo(rsGetOld.getString(4), rsGetOld.getString(5),
 					rsGetOld.getInt(6), rsGetOld.getDouble(7));
 			users.add(info);
@@ -86,7 +87,7 @@ public class getData {
       for(Result result : resultScanner){
     	  num++;
     	  System.out.println(num);
-//      	CellScanner cellScanner = result.cellScanner();
+		  //CellScanner cellScanner = result.cellScanner();
     	  byte[] macbytes = result.getValue("info".getBytes(), "mac".getBytes());
     	  byte[] rangebytes = result.getValue("info".getBytes(), "range".getBytes());
     	  byte[] timeByte = result.getValue("info".getBytes(), "time".getBytes());
@@ -120,43 +121,43 @@ public class getData {
 			  if(false == newMac.contains(mac))
 			  {
 				  newMac.add(mac);
-//				  firstTime.add(timeStr);
+				  //firstTime.add(timeStr);
 				  users.add(new UserInfo(timeStr, timeStr, 1, 0));
 			  }
 		  }
 		  else{
 			  if(false == newMac.contains(mac)){
 				  int index = oldMac.indexOf(mac);
-//				  oldMacLasttime.set(index, timeStr);
-//				  oldMacContime.set(index, oldMacContime.get(index)+1);
+				  //oldMacLasttime.set(index, timeStr);
+				  //oldMacContime.set(index, oldMacContime.get(index)+1);
 				  users.get(index).setInShopTime(users.get(index).inShopTime + 1);
 				  users.get(index).setLastTime(timeStr);
 				  
 			  }
 		  }
 
-//    	  if(false == macList.contains(info)){
-//    		  macList.add(info);
-//    	  }
-//    	  else{//如果已经存在于链表中，需要对range判断是否需要更新
-//    		  for(int i=0;i<macList.size();i++){//遍历链表
-//    			  WifiInfo tmpInfo = macList.get(i);
-//    			  if(info.range > tmpInfo.range){//如果新的距离大于存在于链表中的距离，就更新
-//    				  macList.set(i, tmpInfo);
-//    			  }
-//    		  }
-//    	  }
+		//    	  if(false == macList.contains(info)){
+		//    		  macList.add(info);
+		//    	  }
+		//    	  else{//如果已经存在于链表中，需要对range判断是否需要更新
+		//    		  for(int i=0;i<macList.size();i++){//遍历链表
+		//    			  WifiInfo tmpInfo = macList.get(i);
+		//    			  if(info.range > tmpInfo.range){//如果新的距离大于存在于链表中的距离，就更新
+		//    				  macList.set(i, tmpInfo);
+		//    			  }
+		//    		  }
+		//    	  }
     	
-//      	for(org.apache.hadoop.hbase.KeyValue keyValue : result.raw()){
-////      		System.out.println(keyValue.getKey());
-//      		String name = new String(keyValue.getQualifier());
-//      		String mac = new String(keyValue.getValue());
-//      		if(name.equals("mac") && false == arrayList.contains(mac)){
-//      			arrayList.add(mac);
-//      		}
-////      		System.out.println(new String(keyValue.getRow())+"  "+new String(keyValue.getFamily())+"  "+new String(keyValue.getQualifier())+"  "+new String(keyValue.getValue()));
-//      		
-//      	}
+		//      	for(org.apache.hadoop.hbase.KeyValue keyValue : result.raw()){
+		////      		System.out.println(keyValue.getKey());
+		//      		String name = new String(keyValue.getQualifier());
+		//      		String mac = new String(keyValue.getValue());
+		//      		if(name.equals("mac") && false == arrayList.contains(mac)){
+		//      			arrayList.add(mac);
+		//      		}
+		////      		System.out.println(new String(keyValue.getRow())+"  "+new String(keyValue.getFamily())+"  "+new String(keyValue.getQualifier())+"  "+new String(keyValue.getValue()));
+		//      		
+		//      	}
       }//获得的链表就是这一天的mac地址和此地址离探针最近的距离
       
       int InShop = 0;//入店量，距离小于300视为入店
@@ -238,8 +239,7 @@ public class getData {
     	  int daysFirToLast = daysBetween(users.get(i).firstTime, users.get(i).lastTime);
           bg = new BigDecimal((double) daysFirToLast / users.get(i).inShopTime);
           double interval = bg.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 
-          
-//          int lastInShopTime = InShopTime.get(macList.indexOf(newMac.get(i)));
+          //int lastInShopTime = InShopTime.get(macList.indexOf(newMac.get(i)));
     	  String sqlUpdate = "update user set"
     	  		+ " lastTime = '"+users.get(i).lastTime+"', "//修改最后一次访问时间
     	  		+"inShopTime = "+users.get(i).inShopTime+", "
@@ -252,6 +252,8 @@ public class getData {
       }
       
 	}
+
+	
     public static int daysBetween(String smdate,String bdate){  
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");  
         Calendar cal = Calendar.getInstance();    

@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="WIFIAnalyse">
-    <output-path>$PROJECT_DIR$/out/artifacts/WIFIAnalyse</output-path>
-    <root id="archive" name="WIFIAnalyse.jar">
-      <element id="module-output" name="WIFIAnalyses" />
-    </root>
-  </artifact>
-</component>
